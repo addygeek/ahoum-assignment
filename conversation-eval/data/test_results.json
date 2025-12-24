@@ -1,0 +1,741 @@
+{
+  "conversation_id": "integration_test_001",
+  "total_turns": 4,
+  "total_facets_evaluated": 20,
+  "summary": {
+    "total_scores": 80,
+    "avg_score": 1.75,
+    "avg_confidence": 0.1,
+    "not_observable_count": 0
+  },
+  "scores": {
+    "1": {
+      "1": {
+        "turn_id": 1,
+        "facet_id": 1,
+        "facet_name": "risktaking",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "2": {
+        "turn_id": 1,
+        "facet_id": 2,
+        "facet_name": "naivety",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "3": {
+        "turn_id": 1,
+        "facet_id": 3,
+        "facet_name": "acidity",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "4": {
+        "turn_id": 1,
+        "facet_id": 4,
+        "facet_name": "democratic_leadership",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "5": {
+        "turn_id": 1,
+        "facet_id": 5,
+        "facet_name": "common_sense",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "6": {
+        "turn_id": 1,
+        "facet_id": 6,
+        "facet_name": "hesitation",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "7": {
+        "turn_id": 1,
+        "facet_id": 7,
+        "facet_name": "discontentment",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "8": {
+        "turn_id": 1,
+        "facet_id": 8,
+        "facet_name": "overprotectiveness",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "9": {
+        "turn_id": 1,
+        "facet_id": 9,
+        "facet_name": "merriness",
+        "score": 1,
+        "label": "low",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "10": {
+        "turn_id": 1,
+        "facet_id": 10,
+        "facet_name": "emotionalism",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "11": {
+        "turn_id": 1,
+        "facet_id": 11,
+        "facet_name": "self_improvement",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "12": {
+        "turn_id": 1,
+        "facet_id": 12,
+        "facet_name": "statistical_reasoning",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "13": {
+        "turn_id": 1,
+        "facet_id": 13,
+        "facet_name": "assertiveness_and_control_in_relationships",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "14": {
+        "turn_id": 1,
+        "facet_id": 14,
+        "facet_name": "cunningness",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "15": {
+        "turn_id": 1,
+        "facet_id": 15,
+        "facet_name": "adventure_seeking_behavior",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "16": {
+        "turn_id": 1,
+        "facet_id": 16,
+        "facet_name": "compassion_fatigue",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "17": {
+        "turn_id": 1,
+        "facet_id": 17,
+        "facet_name": "moroseness",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "18": {
+        "turn_id": 1,
+        "facet_id": 18,
+        "facet_name": "specialist",
+        "score": 0,
+        "label": "very_low",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "19": {
+        "turn_id": 1,
+        "facet_id": 19,
+        "facet_name": "aloofness",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "20": {
+        "turn_id": 1,
+        "facet_id": 20,
+        "facet_name": "genuine",
+        "score": 0,
+        "label": "very_low",
+        "confidence": 0.1,
+        "not_observable": false
+      }
+    },
+    "2": {
+      "1": {
+        "turn_id": 2,
+        "facet_id": 1,
+        "facet_name": "risktaking",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "2": {
+        "turn_id": 2,
+        "facet_id": 2,
+        "facet_name": "naivety",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "3": {
+        "turn_id": 2,
+        "facet_id": 3,
+        "facet_name": "acidity",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "4": {
+        "turn_id": 2,
+        "facet_id": 4,
+        "facet_name": "democratic_leadership",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "5": {
+        "turn_id": 2,
+        "facet_id": 5,
+        "facet_name": "common_sense",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "6": {
+        "turn_id": 2,
+        "facet_id": 6,
+        "facet_name": "hesitation",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "7": {
+        "turn_id": 2,
+        "facet_id": 7,
+        "facet_name": "discontentment",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "8": {
+        "turn_id": 2,
+        "facet_id": 8,
+        "facet_name": "overprotectiveness",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "9": {
+        "turn_id": 2,
+        "facet_id": 9,
+        "facet_name": "merriness",
+        "score": 1,
+        "label": "low",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "10": {
+        "turn_id": 2,
+        "facet_id": 10,
+        "facet_name": "emotionalism",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "11": {
+        "turn_id": 2,
+        "facet_id": 11,
+        "facet_name": "self_improvement",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "12": {
+        "turn_id": 2,
+        "facet_id": 12,
+        "facet_name": "statistical_reasoning",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "13": {
+        "turn_id": 2,
+        "facet_id": 13,
+        "facet_name": "assertiveness_and_control_in_relationships",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "14": {
+        "turn_id": 2,
+        "facet_id": 14,
+        "facet_name": "cunningness",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "15": {
+        "turn_id": 2,
+        "facet_id": 15,
+        "facet_name": "adventure_seeking_behavior",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "16": {
+        "turn_id": 2,
+        "facet_id": 16,
+        "facet_name": "compassion_fatigue",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "17": {
+        "turn_id": 2,
+        "facet_id": 17,
+        "facet_name": "moroseness",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "18": {
+        "turn_id": 2,
+        "facet_id": 18,
+        "facet_name": "specialist",
+        "score": 0,
+        "label": "very_low",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "19": {
+        "turn_id": 2,
+        "facet_id": 19,
+        "facet_name": "aloofness",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "20": {
+        "turn_id": 2,
+        "facet_id": 20,
+        "facet_name": "genuine",
+        "score": 0,
+        "label": "very_low",
+        "confidence": 0.1,
+        "not_observable": false
+      }
+    },
+    "3": {
+      "1": {
+        "turn_id": 3,
+        "facet_id": 1,
+        "facet_name": "risktaking",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "2": {
+        "turn_id": 3,
+        "facet_id": 2,
+        "facet_name": "naivety",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "3": {
+        "turn_id": 3,
+        "facet_id": 3,
+        "facet_name": "acidity",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "4": {
+        "turn_id": 3,
+        "facet_id": 4,
+        "facet_name": "democratic_leadership",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "5": {
+        "turn_id": 3,
+        "facet_id": 5,
+        "facet_name": "common_sense",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "6": {
+        "turn_id": 3,
+        "facet_id": 6,
+        "facet_name": "hesitation",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "7": {
+        "turn_id": 3,
+        "facet_id": 7,
+        "facet_name": "discontentment",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "8": {
+        "turn_id": 3,
+        "facet_id": 8,
+        "facet_name": "overprotectiveness",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "9": {
+        "turn_id": 3,
+        "facet_id": 9,
+        "facet_name": "merriness",
+        "score": 1,
+        "label": "low",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "10": {
+        "turn_id": 3,
+        "facet_id": 10,
+        "facet_name": "emotionalism",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "11": {
+        "turn_id": 3,
+        "facet_id": 11,
+        "facet_name": "self_improvement",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "12": {
+        "turn_id": 3,
+        "facet_id": 12,
+        "facet_name": "statistical_reasoning",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "13": {
+        "turn_id": 3,
+        "facet_id": 13,
+        "facet_name": "assertiveness_and_control_in_relationships",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "14": {
+        "turn_id": 3,
+        "facet_id": 14,
+        "facet_name": "cunningness",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "15": {
+        "turn_id": 3,
+        "facet_id": 15,
+        "facet_name": "adventure_seeking_behavior",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "16": {
+        "turn_id": 3,
+        "facet_id": 16,
+        "facet_name": "compassion_fatigue",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "17": {
+        "turn_id": 3,
+        "facet_id": 17,
+        "facet_name": "moroseness",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "18": {
+        "turn_id": 3,
+        "facet_id": 18,
+        "facet_name": "specialist",
+        "score": 0,
+        "label": "very_low",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "19": {
+        "turn_id": 3,
+        "facet_id": 19,
+        "facet_name": "aloofness",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "20": {
+        "turn_id": 3,
+        "facet_id": 20,
+        "facet_name": "genuine",
+        "score": 0,
+        "label": "very_low",
+        "confidence": 0.1,
+        "not_observable": false
+      }
+    },
+    "4": {
+      "1": {
+        "turn_id": 4,
+        "facet_id": 1,
+        "facet_name": "risktaking",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "2": {
+        "turn_id": 4,
+        "facet_id": 2,
+        "facet_name": "naivety",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "3": {
+        "turn_id": 4,
+        "facet_id": 3,
+        "facet_name": "acidity",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "4": {
+        "turn_id": 4,
+        "facet_id": 4,
+        "facet_name": "democratic_leadership",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "5": {
+        "turn_id": 4,
+        "facet_id": 5,
+        "facet_name": "common_sense",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "6": {
+        "turn_id": 4,
+        "facet_id": 6,
+        "facet_name": "hesitation",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "7": {
+        "turn_id": 4,
+        "facet_id": 7,
+        "facet_name": "discontentment",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "8": {
+        "turn_id": 4,
+        "facet_id": 8,
+        "facet_name": "overprotectiveness",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "9": {
+        "turn_id": 4,
+        "facet_id": 9,
+        "facet_name": "merriness",
+        "score": 1,
+        "label": "low",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "10": {
+        "turn_id": 4,
+        "facet_id": 10,
+        "facet_name": "emotionalism",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "11": {
+        "turn_id": 4,
+        "facet_id": 11,
+        "facet_name": "self_improvement",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "12": {
+        "turn_id": 4,
+        "facet_id": 12,
+        "facet_name": "statistical_reasoning",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "13": {
+        "turn_id": 4,
+        "facet_id": 13,
+        "facet_name": "assertiveness_and_control_in_relationships",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "14": {
+        "turn_id": 4,
+        "facet_id": 14,
+        "facet_name": "cunningness",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "15": {
+        "turn_id": 4,
+        "facet_id": 15,
+        "facet_name": "adventure_seeking_behavior",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "16": {
+        "turn_id": 4,
+        "facet_id": 16,
+        "facet_name": "compassion_fatigue",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "17": {
+        "turn_id": 4,
+        "facet_id": 17,
+        "facet_name": "moroseness",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "18": {
+        "turn_id": 4,
+        "facet_id": 18,
+        "facet_name": "specialist",
+        "score": 0,
+        "label": "very_low",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "19": {
+        "turn_id": 4,
+        "facet_id": 19,
+        "facet_name": "aloofness",
+        "score": 2,
+        "label": "neutral",
+        "confidence": 0.1,
+        "not_observable": false
+      },
+      "20": {
+        "turn_id": 4,
+        "facet_id": 20,
+        "facet_name": "genuine",
+        "score": 0,
+        "label": "very_low",
+        "confidence": 0.1,
+        "not_observable": false
+      }
+    }
+  }
+}
