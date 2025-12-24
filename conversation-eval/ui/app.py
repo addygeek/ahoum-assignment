@@ -11,13 +11,27 @@ import plotly.express as px
 import plotly.graph_objects as go
 import json
 import sys
+import os
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent))
+# Fix imports for both local and Streamlit Cloud
+current_dir = Path(__file__).parent
+project_root = current_dir.parent
 
-from data.facet_registry import create_registry_from_csv, FacetCategory
-from data.preprocessor import Conversation, Turn, ConversationPreprocessor
-from models.evaluator import ConversationEvaluator, EvaluationConfig
+# Add to path for imports
+sys.path.insert(0, str(project_root))
+
+# Try to import modules
+try:
+    from data.facet_registry import create_registry_from_csv, FacetCategory
+    from data.preprocessor import Conversation, Turn, ConversationPreprocessor
+    from models.evaluator import ConversationEvaluator, EvaluationConfig
+except ImportError:
+    # If relative import fails, try absolute
+    sys.path.insert(0, str(current_dir.parent))
+    from data.facet_registry import create_registry_from_csv, FacetCategory
+    from data.preprocessor import Conversation, Turn, ConversationPreprocessor
+    from models.evaluator import ConversationEvaluator, EvaluationConfig
 
 # Page configuration
 st.set_page_config(
@@ -50,10 +64,32 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
+def find_csv_path():
+    """Find the CSV file path for both local and cloud deployment."""
+    possible_paths = [
+        # Streamlit Cloud path
+        Path("/mount/src/facenet-assignment/Facets Assignment.csv"),
+        Path("/mount/src/ahoum-assignment/Facets Assignment.csv"),
+        # Local paths (relative)
+        project_root.parent / "Facets Assignment.csv",
+        project_root / "Facets Assignment.csv",
+        # Current directory
+        Path("Facets Assignment.csv"),
+        Path("../Facets Assignment.csv"),
+    ]
+    
+    for path in possible_paths:
+        if path.exists():
+            return str(path)
+    
+    # If not found, return the most likely path
+    return str(project_root.parent / "Facets Assignment.csv")
+
+
 @st.cache_resource
 def load_registry():
     """Load the facet registry from the CSV file."""
-    csv_path = r"c:\Users\adity\OneDrive\Desktop\7th sem\asign\Facets Assignment.csv"
+    csv_path = find_csv_path()
     return create_registry_from_csv(csv_path)
 
 
@@ -322,6 +358,7 @@ def main():
         evaluator = load_evaluator(registry)
     except Exception as e:
         st.error(f"Failed to load registry: {e}")
+        st.info("Make sure 'Facets Assignment.csv' is in the project root directory.")
         return
     
     # Render sidebar
