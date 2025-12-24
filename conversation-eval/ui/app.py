@@ -1,11 +1,8 @@
 """
 ACEF Streamlit Web Interface
 
-Visual interface for conversation evaluation with:
-- Facet registry browser
-- Conversation input
-- Heatmap visualization
-- Confidence overlays
+Provides a visual interface for the conversation evaluation system.
+Includes facet browsing, conversation input, and result visualization.
 """
 
 import streamlit as st
@@ -16,22 +13,21 @@ import json
 import sys
 from pathlib import Path
 
-# Add parent to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from data.facet_registry import create_registry_from_csv, FacetCategory
 from data.preprocessor import Conversation, Turn, ConversationPreprocessor
 from models.evaluator import ConversationEvaluator, EvaluationConfig
 
-# Page config
+# Page configuration
 st.set_page_config(
     page_title="ACEF - Conversation Evaluator",
-    page_icon="🎯",
+    page_icon="chart_with_upwards_trend",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS
+# Custom styling
 st.markdown("""
 <style>
     .main-header {
@@ -50,49 +46,44 @@ st.markdown("""
         color: white;
         text-align: center;
     }
-    .score-very-low { background-color: #ef4444; color: white; padding: 2px 8px; border-radius: 4px; }
-    .score-low { background-color: #f97316; color: white; padding: 2px 8px; border-radius: 4px; }
-    .score-neutral { background-color: #6b7280; color: white; padding: 2px 8px; border-radius: 4px; }
-    .score-high { background-color: #22c55e; color: white; padding: 2px 8px; border-radius: 4px; }
-    .score-very-high { background-color: #10b981; color: white; padding: 2px 8px; border-radius: 4px; }
 </style>
 """, unsafe_allow_html=True)
 
 
 @st.cache_resource
 def load_registry():
-    """Load facet registry from CSV."""
-    csv_path = Path(__file__).parent.parent / "Facets Assignment.csv"
-    return create_registry_from_csv(str(csv_path))
+    """Load the facet registry from the CSV file."""
+    csv_path = r"c:\Users\adity\OneDrive\Desktop\7th sem\asign\Facets Assignment.csv"
+    return create_registry_from_csv(csv_path)
 
 
 @st.cache_resource
 def load_evaluator(_registry):
-    """Initialize the evaluator."""
+    """Initialize the conversation evaluator with the given registry."""
     config = EvaluationConfig()
     return ConversationEvaluator(_registry, config)
 
 
 def render_header():
-    """Render the main header."""
-    st.markdown('<h1 class="main-header">🎯 ACEF - Conversation Evaluation Framework</h1>', unsafe_allow_html=True)
+    """Render the main page header."""
+    st.markdown('<h1 class="main-header">ACEF - Conversation Evaluation Framework</h1>', unsafe_allow_html=True)
     st.markdown("---")
 
 
 def render_sidebar(registry):
-    """Render the sidebar with facet browser."""
+    """Render the sidebar with facet browser functionality."""
     with st.sidebar:
-        st.header("📊 Facet Registry")
+        st.header("Facet Registry")
         
         summary = registry.summary()
         st.metric("Total Facets", summary["total_facets"])
         
-        # Category filter
+        # Category filter dropdown
         st.subheader("Browse by Category")
         categories = list(summary["by_category"].keys())
         selected_cat = st.selectbox("Select Category", ["All"] + categories)
         
-        # Show facets
+        # Display facets based on filter
         if selected_cat == "All":
             facets = list(registry.facets.values())[:50]
         else:
@@ -108,10 +99,10 @@ def render_sidebar(registry):
 
 
 def render_conversation_input():
-    """Render conversation input section."""
-    st.subheader("💬 Enter Conversation")
+    """Render the conversation input section."""
+    st.subheader("Enter Conversation")
     
-    # Sample conversations
+    # Predefined sample conversations for testing
     sample_conversations = {
         "Emotional Support": [
             {"speaker": "user", "text": "I'm feeling really stressed about my exam tomorrow."},
@@ -136,7 +127,7 @@ def render_conversation_input():
     with col2:
         conversation_id = st.text_input("Conversation ID", value="conv_001")
     
-    # Turn inputs
+    # Load template data if selected
     if template != "Custom" and sample_conversations[template]:
         turns_data = sample_conversations[template]
         st.info(f"Loaded {len(turns_data)} turns from template")
@@ -166,8 +157,8 @@ def render_conversation_input():
 
 
 def render_facet_selector(registry):
-    """Render facet selection."""
-    st.subheader("🎯 Select Facets to Evaluate")
+    """Render the facet selection interface."""
+    st.subheader("Select Facets to Evaluate")
     
     col1, col2 = st.columns(2)
     
@@ -197,8 +188,7 @@ def render_facet_selector(registry):
 
 
 def create_heatmap(result_df):
-    """Create a heatmap visualization of scores."""
-    # Pivot for heatmap
+    """Create a heatmap visualization of evaluation scores."""
     pivot_df = result_df.pivot(index="facet_name", columns="turn_id", values="score")
     
     fig = px.imshow(
@@ -219,7 +209,7 @@ def create_heatmap(result_df):
 
 
 def create_confidence_chart(result_df):
-    """Create confidence bar chart."""
+    """Create a bar chart showing average confidence by facet."""
     avg_conf = result_df.groupby("facet_name")["confidence"].mean().reset_index()
     avg_conf = avg_conf.sort_values("confidence", ascending=True)
     
@@ -239,7 +229,7 @@ def create_confidence_chart(result_df):
 
 
 def create_score_distribution(result_df):
-    """Create score distribution pie chart."""
+    """Create a pie chart showing the distribution of score labels."""
     score_counts = result_df["label"].value_counts()
     
     colors = {
@@ -262,10 +252,10 @@ def create_score_distribution(result_df):
 
 
 def render_results(result):
-    """Render evaluation results."""
-    st.header("📊 Evaluation Results")
+    """Render the evaluation results with visualizations."""
+    st.header("Evaluation Results")
     
-    # Summary metrics
+    # Summary metrics row
     col1, col2, col3, col4 = st.columns(4)
     
     with col1:
@@ -294,8 +284,8 @@ def render_results(result):
     
     result_df = pd.DataFrame(rows)
     
-    # Tabs for different views
-    tab1, tab2, tab3, tab4 = st.tabs(["🔥 Heatmap", "📈 Charts", "📋 Table", "📄 JSON"])
+    # Tabbed view for different result formats
+    tab1, tab2, tab3, tab4 = st.tabs(["Heatmap", "Charts", "Table", "JSON"])
     
     with tab1:
         if len(result_df) > 0:
@@ -316,29 +306,17 @@ def render_results(result):
     
     with tab3:
         if len(result_df) > 0:
-            # Style the dataframe
-            def color_score(val):
-                colors = {
-                    "very_low": "background-color: #fee2e2",
-                    "low": "background-color: #ffedd5",
-                    "neutral": "background-color: #f3f4f6",
-                    "high": "background-color: #dcfce7",
-                    "very_high": "background-color: #d1fae5"
-                }
-                return colors.get(val, "")
-            
-            styled_df = result_df.style.applymap(color_score, subset=["label"])
-            st.dataframe(styled_df, use_container_width=True, height=400)
+            st.dataframe(result_df, use_container_width=True, height=400)
     
     with tab4:
         st.json(result.to_dict())
 
 
 def main():
-    """Main application."""
+    """Main application entry point."""
     render_header()
     
-    # Load registry
+    # Load registry and evaluator
     try:
         registry = load_registry()
         evaluator = load_evaluator(registry)
@@ -346,10 +324,10 @@ def main():
         st.error(f"Failed to load registry: {e}")
         return
     
-    # Sidebar
+    # Render sidebar
     render_sidebar(registry)
     
-    # Main content
+    # Main content layout
     col1, col2 = st.columns([2, 1])
     
     with col1:
@@ -360,14 +338,14 @@ def main():
     
     st.markdown("---")
     
-    # Evaluate button
-    if st.button("🚀 Evaluate Conversation", type="primary", use_container_width=True):
+    # Evaluation button
+    if st.button("Evaluate Conversation", type="primary", use_container_width=True):
         if not turns:
             st.error("Please enter at least one turn")
             return
         
         with st.spinner("Evaluating conversation..."):
-            # Create conversation object
+            # Build conversation object
             turn_objects = [
                 Turn(turn_id=t["turn_id"], speaker=t["speaker"], text=t["text"])
                 for t in turns
@@ -378,12 +356,12 @@ def main():
                 turns=turn_objects
             )
             
-            # Evaluate
+            # Run evaluation
             try:
                 result = evaluator.evaluate_conversation(conversation, facet_ids)
-                st.success("✅ Evaluation complete!")
+                st.success("Evaluation complete")
                 
-                # Store in session for persistence
+                # Store result in session state
                 st.session_state["last_result"] = result
                 
                 render_results(result)
@@ -391,7 +369,7 @@ def main():
             except Exception as e:
                 st.error(f"Evaluation failed: {e}")
     
-    # Show last result if exists
+    # Display previous result if available
     elif "last_result" in st.session_state:
         render_results(st.session_state["last_result"])
 

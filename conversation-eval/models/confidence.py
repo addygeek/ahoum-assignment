@@ -409,4 +409,4 @@ if __name__ == "__main__":
     )
     print(f"Combined confidence: {combined:.3f}")
     
-    print("\n✓ Confidence estimation working correctly!")
+    print("\nConfidence estimation working correctly.")

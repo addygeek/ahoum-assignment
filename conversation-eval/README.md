@@ -1,31 +1,38 @@
 # ACEF - Ahoum Conversation Evaluation Framework
 
-A **production-ready conversation evaluation benchmark** that automatically scores conversation turns across **300+ facets** covering linguistic quality, pragmatics, safety, and emotional/behavioral signals.
+A production-ready conversation evaluation benchmark that scores conversation turns across 300+ facets covering linguistic quality, pragmatics, safety, and emotional/behavioral signals.
 
 ## Features
 
-- **Scalable to 5000+ facets** - Adding facets is just adding data rows
-- **No one-shot prompting** - All scoring is model-driven and programmatic
-- **Confidence estimation** - Every score includes uncertainty quantification
-- **Open-weight LLMs** - Uses OpenRouter API (Qwen2-7B, Llama-3-8B, etc.)
-- **REST API** - FastAPI endpoints for evaluation
-- **Streaming support** - Real-time turn-by-turn evaluation
+- Scalable to 5000+ facets without code changes
+- Model-driven scoring (no one-shot prompting)
+- Confidence estimation for all scores
+- Open-weight LLM support via OpenRouter (Qwen2-7B, Llama-3-8B, etc.)
+- REST API with FastAPI
+- Streaming evaluation support
+- Visual Streamlit interface
 
 ## Architecture
 
 ```
 Conversation
-    ↓
+    |
+    v
 Turn Segmentation (preprocessor.py)
-    ↓
-Contextual Encoding (encoder.py - LLM via OpenRouter)
-    ↓
+    |
+    v
+Contextual Encoding (encoder.py)
+    |
+    v
 Shared Turn Representation
-    ↓
+    |
+    v
 Facet Router (evaluator.py)
-    ↓
+    |
+    v
 Facet Scoring Heads (scoring_heads.py)
-    ↓
+    |
+    v
 Score + Confidence Output (confidence.py)
 ```
 
@@ -34,19 +41,21 @@ Score + Confidence Output (confidence.py)
 ```
 conversation-eval/
 ├── data/
-│   ├── facet_registry.py    # Facet parsing and registry
-│   ├── preprocessor.py      # Conversation preprocessing
-│   └── sample_conversations.json
+│   ├── facet_registry.py         # Facet parsing and registry
+│   ├── preprocessor.py           # Conversation preprocessing
+│   └── sample_conversations.json # Test data
 ├── models/
-│   ├── encoder.py           # LLM-based turn encoding
-│   ├── scoring_heads.py     # Facet scoring MLPs
-│   ├── confidence.py        # Uncertainty estimation
-│   └── evaluator.py         # Main evaluation pipeline
+│   ├── encoder.py                # LLM-based turn encoding
+│   ├── scoring_heads.py          # Facet scoring MLPs
+│   ├── confidence.py             # Uncertainty estimation
+│   └── evaluator.py              # Main evaluation pipeline
 ├── inference/
-│   └── pipeline.py          # Batch/streaming inference
+│   └── pipeline.py               # Batch/streaming inference
 ├── api/
-│   ├── main.py              # FastAPI endpoints
-│   └── schemas.py           # Request/response models
+│   ├── main.py                   # FastAPI endpoints
+│   └── schemas.py                # Request/response models
+├── ui/
+│   └── app.py                    # Streamlit interface
 ├── requirements.txt
 └── README.md
 ```
@@ -63,7 +72,7 @@ pip install -r requirements.txt
 
 ```bash
 cp .env.example .env
-# Edit .env and add your OPENROUTER_API_KEY
+# Add your OPENROUTER_API_KEY to .env
 ```
 
 ### 3. Generate Facet Registry
@@ -78,7 +87,13 @@ python data/facet_registry.py
 uvicorn api.main:app --reload --port 8000
 ```
 
-### 5. Evaluate a Conversation
+### 5. Run Streamlit UI
+
+```bash
+streamlit run ui/app.py --server.port 8501
+```
+
+### 6. Evaluate a Conversation (via API)
 
 ```bash
 curl -X POST http://localhost:8000/evaluate \
@@ -88,7 +103,7 @@ curl -X POST http://localhost:8000/evaluate \
       "conversation_id": "test_001",
       "turns": [
         {"turn_id": 1, "speaker": "user", "text": "I am stressed"},
-        {"turn_id": 2, "speaker": "assistant", "text": "I understand. Let me help."}
+        {"turn_id": 2, "speaker": "assistant", "text": "Let me help."}
       ]
     }
   }'
@@ -114,20 +129,20 @@ curl -X POST http://localhost:8000/evaluate \
 
 | Level | Label | Description |
 |-------|-------|-------------|
-| 0 | Very Low | Minimal presence |
-| 1 | Low | Below average |
-| 2 | Neutral | Average/not applicable |
-| 3 | High | Above average |
-| 4 | Very High | Strong presence |
+| 0 | very_low | Minimal presence |
+| 1 | low | Below average |
+| 2 | neutral | Average/not applicable |
+| 3 | high | Above average |
+| 4 | very_high | Strong presence |
 
 ### Confidence Estimation
 
 Confidence scores (0-1) are computed using:
-- Softmax margin (top-2 probability difference)
-- Prediction entropy
+- Softmax margin (difference between top-2 predictions)
+- Prediction entropy (uncertainty in distribution)
 - Optional MC Dropout variance
 
-### Observability
+### Observability Types
 
 | Type | Behavior |
 |------|----------|
@@ -137,23 +152,24 @@ Confidence scores (0-1) are computed using:
 
 ## Facet Categories
 
-- **Behavioral** - Actions and habits
-- **Cognitive** - Reasoning and thinking
-- **Emotional** - Feelings and moods
-- **Safety** - Harm and risk detection
-- **Spiritual** - Religious and spiritual themes
-- **Physiological** - Physical/biological markers
-- **Social** - Interpersonal dynamics
-- **Personality** - Character traits
-- **Linguistic** - Language patterns
+- Behavioral - Actions and habits
+- Cognitive - Reasoning and thinking
+- Emotional - Feelings and moods
+- Safety - Harm and risk detection
+- Spiritual - Religious and spiritual themes
+- Physiological - Physical/biological markers
+- Social - Interpersonal dynamics
+- Personality - Character traits
+- Linguistic - Language patterns
 
 ## Requirements
 
 - Python 3.10+
 - FastAPI
 - Pydantic
+- Streamlit
+- Plotly
 - Requests
-- Optional: sentence-transformers (local embeddings)
 
 ## Environment Variables
 

@@ -400,4 +400,4 @@ if __name__ == "__main__":
     result_new = scorer.score_facet(turn_emb, facet_id=401, cluster="other")
     print(f"\nNew Facet 401: {result_new['label']}")
     
-    print("\n✓ Facet scoring system working correctly!")
+    print("\nFacet scoring system working correctly.")

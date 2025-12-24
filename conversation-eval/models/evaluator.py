@@ -447,4 +447,4 @@ if __name__ == "__main__":
     for fid, score in result.get_turn_scores(1).items():
         print(f"  {score.facet_name}: {score.label} (conf={score.confidence:.2f})")
     
-    print("\n✓ Conversation evaluator working correctly!")
+    print("\nConversation evaluator working correctly.")
