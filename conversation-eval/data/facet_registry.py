@@ -235,10 +235,28 @@ class FacetRegistry:
     
     def load_from_csv(self, csv_path: str) -> None:
         """Load facets from the CSV file and create registry."""
-        path = Path(csv_path)
+        path = Path(csv_path).resolve()
         
         if not path.exists():
-            raise FileNotFoundError(f"CSV file not found: {csv_path}")
+            # Try to resolve relative to current file if not found
+            fallback = list(Path.cwd().rglob(path.name))
+            if fallback:
+                path = fallback[0]
+            else:
+                # Try finding in typical locations
+                potential_roots = [
+                    Path.cwd(),
+                    Path.cwd().parent,
+                    Path(__file__).parent.parent.parent
+                ]
+                for root in potential_roots:
+                    candidate = root / path.name
+                    if candidate.exists():
+                        path = candidate
+                        break
+        
+        if not path.exists():
+            raise FileNotFoundError(f"CSV file not found: {csv_path} (Resolved to: {path})")
         
         with open(path, 'r', encoding='utf-8') as f:
             lines = f.readlines()

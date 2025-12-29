@@ -1,14 +1,15 @@
 """
 ACEF Complete System Test
-
-This script verifies the full ACEF pipeline by loading facets from CSV,
-preprocessing a sample conversation, and running evaluation across
-multiple facets.
 """
 
 import sys
 import json
+import os
 from pathlib import Path
+
+# Load env from parent directory
+from dotenv import load_dotenv
+load_dotenv(Path(__file__).parent.parent / ".env")
 
 sys.path.insert(0, str(Path(__file__).parent))
 
