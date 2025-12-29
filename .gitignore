@@ -1,5 +1,6 @@
 .env
 .env.example
-prd1.md
-assignment-raw.txt
-how.md
+conversation-eval/docs/
+conversation-eval/.cache/
+__pycache__/
+*.pyc

@@ -7,7 +7,7 @@ A production-ready conversation evaluation benchmark that scores conversation tu
 - Scalable to 5000+ facets without code changes
 - Model-driven scoring (no one-shot prompting)
 - Confidence estimation for all scores
-- Open-weight LLM support via OpenRouter (Qwen2-7B, Llama-3-8B, etc.)
+- Open-weight LLM support via OpenRouter (Qwen2-7b)
 - REST API with FastAPI
 - Streaming evaluation support
 - Visual Streamlit interface

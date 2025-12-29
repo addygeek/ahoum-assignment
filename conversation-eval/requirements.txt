@@ -3,9 +3,12 @@ fastapi>=0.104.0
 uvicorn>=0.24.0
 pydantic>=2.5.0
 
-# ML/AI
+# ML/AI - Core
 numpy>=1.24.0
 requests>=2.31.0
+
+# ML/AI - Embeddings (IMPORTANT: Install for real ML)
+sentence-transformers>=2.2.0
 
 # Data processing
 pandas>=2.1.0
@@ -16,3 +19,14 @@ plotly>=5.18.0
 
 # Utilities
 python-dotenv>=1.0.0
+tqdm>=4.65.0
+
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Optional: PyTorch for GPU acceleration
+# torch>=2.0.0
+
+# Optional: Redis for caching
+# redis>=4.5.0
